@@ -66,6 +66,8 @@ public class DepartmentController {
         }
         var userData=userSerivice.findAll();
         model.addAttribute("id",id);
+        assert department != null;
+        model.addAttribute("userDataName",department.getLeader().getUsername());
         model.addAttribute("userData",userData);
         model.addAttribute("departmentInfo",department);
         model.addAttribute("page","update-department");

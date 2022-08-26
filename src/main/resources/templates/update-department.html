@@ -33,15 +33,31 @@
                    th:value="${departmentInfo.address}">
         </div>
         <div class="col-md-4">
-            <select >
-                <option th:each="item: ${userData}" th:text="${item.username}"></option>
+            <select id="leader">
+                <th:block th:each="item: ${userData}"  th:switch="${userDataName}">
+                    <div th:case="${item.username}">
+                        <option selected="selected" th:text="${item.username}"></option>
+                    </div>
+                    <div th:case="*">
+                        <option  th:text="${item.username}" ></option>
+                    </div>
+                </th:block>
             </select>
+            <input type="text" style="display: none" id="select" name="leader">
         </div>
         <div class="col-md-10">
-            <button type="submit" class="btn btn-sm">Save</button>
+            <button class="btn btn-sm" id="savaBTN">Save</button>
             <button class="btn btn-sm" onclick="history.go(-1)">Cancel</button>
         </div>
-
+        <script>
+            var saveBTN=document.getElementById("savaBTN");
+            saveBTN.onclick=function () {
+                var select=document.getElementById("leader");
+                var input=document.getElementById("select");
+                input.value=select[select.selectedIndex].value;
+                this.submit();
+            }
+        </script>
     </form>
 </div>
 </body>
