@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <div th:fragment="content">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb hidden-xs">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+
+        <h4 class="page-title" >DEPARTMENT MANAGEMANET</h4>
+
+        <!-- Deafult Table -->
+        <div class="block-area" id="defaultStyle">
+            <h3 class="block-title" th:text="${tableName}"></h3>
+
+            <a class ="btn" th:href="@{/department/new-department}">New</a>
+            <table class="table tile">
+                <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Tel</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Leader</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item: ${tableData}">
+                    <td>[[${item.name}]]</td>
+                    <td>[[${item.tel}]]</td>
+                    <td>[[${item.email}]]</td>
+                    <td>[[${item.address}]]</td>
+                    <td>[[${item.leader.username}]]</td>
+                    <td>
+                        <form th:action="@{/department/update}" style="float: left">
+                            <input name="id" th:value="${item.id}" style="display: none">
+                            <input type="submit" name="" value="Update" class="btn" id="updateBtn">
+                        </form>
+                        <form th:action="@{/department/delete}" >
+                            <input name="id" th:value="${item.id}" style="display: none">
+                            <input type="submit" name="" value="delete" class="btn" id="deleteBtn">
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</html>

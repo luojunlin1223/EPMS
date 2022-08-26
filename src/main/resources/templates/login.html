@@ -31,31 +31,41 @@
     </style>
 </head>
 
-<body style="background: url(https://img.tukuppt.com/bg_grid/00/12/01/zx8rlnIv24.jpg!/fh/350) no-repeat; background-size: 100%;">
+<body style="background: url(../images/background.png) no-repeat; background-size: 100%;">
 <div class="" style="width: 360px;margin: 7% auto;z-index: 25;">
     <div class="login-logo texta-c" style="color: #FFF">Login</div>
     <div class="longin-box-body" style="border-radius:10px;box-shadow: 1px 1px 1px 1px #333;">
         <p class="login-box-msg">Welcome to EPMS！</p >
-        <form action="Authenticate">
+        <p style="color:red" th:text="${msg}" id="tips"></p>
+        <form th:action="@{Authenticate}">
             <div class="form-group has-feedback">
-                <input name="userName" type="text" class="form-control" placeholder="Username">
+                <input name="userName" type="text" class="form-control" placeholder="Username" id="username">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             </br>
             <div class="form-group has-feedback">
-                <input name="password" type="password" class="form-control" placeholder="Password">
+                <input name="password" type="password" class="form-control" placeholder="Password" id="password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             </br>
             <div class="form-group">
-                <input type="submit" name="" value="Login" class="btn btn-primary btn-block">
+                <input type="submit" name="" value="Login" class="btn btn-primary btn-block" id="btn">
             </div>
         </form>
     </div>
 </div>
-
-
-
-
+<script>
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+    var btn=document.getElementById("btn");
+    function isNull(val) {
+        return !(val.replace(/(^s*)|(s*$)/g, "").length - 0);
+    }
+    btn.onclick=function () {
+        if(isNull(username.value)){
+            alert("用户名不能为空");
+        }
+    }
+</script>
 </body>
 </html>

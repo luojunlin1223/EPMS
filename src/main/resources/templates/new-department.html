@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb hidden-xs">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+
+        <h4 class="page-title">NEW DEPARTMENT</h4>
+        <form class="row form-columned" role="form" th:action="${#httpServletRequest.requestURI}+'/save'">
+            <div class="col-md-4">
+                <input type="text" class="form-control input-sm m-b-10" placeholder="Department" name="department">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control input-sm m-b-10" placeholder="Tel" name="tel">
+            </div>
+            <div class="col-md-4">
+                <input type="tel" class="form-control input-sm m-b-10" placeholder="Email" name="email">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control input-sm m-b-10" placeholder="Address" name="address">
+            </div>
+            <div class="col-md-10">
+                <button type="submit" class="btn btn-sm">Save</button>
+            </div>
+        </form>
+        <button class="btn btn-sm" onclick="history.go(-1)">Cancel</button>
+    </div>
+</body>
+</html>
